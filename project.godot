@@ -50,10 +50,6 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
-[display]
-
-window/stretch/aspect="keep"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
