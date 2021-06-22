@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://Kenney Mini.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Countdown.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clock" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 120.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hour" type="Label" parent="Clock"]
+margin_top = 48.0
+margin_right = 1024.0
+margin_bottom = 173.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minute" type="Label" parent="Clock"]
+margin_top = 177.0
+margin_right = 1024.0
+margin_bottom = 302.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="Seconds" type="Label" parent="Clock"]
+margin_top = 306.0
+margin_right = 1024.0
+margin_bottom = 431.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="Countdown" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Countdown" type="Label" parent="Countdown"]
+margin_right = 1024.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Countdown"]
+wait_time = 50.0
+one_shot = true
+
+[node name="Button" type="Button" parent="Countdown"]
+margin_top = 67.0
+margin_right = 1024.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 2 )
+text = "Start the timer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Countdown"]
+margin_top = 140.0
+margin_right = 1024.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+placeholder_text = "Countdown in seconds"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Countdown/Button" to="Countdown" method="_on_Button_pressed"]
