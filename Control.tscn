@@ -1,33 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Control.gd" type="Script" id=1]
-[ext_resource path="res://Kenney Mini.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Countdown.gd" type="Script" id=4]
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 2 )
+[ext_resource path="res://src/components/Clock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/components/Countdown.tscn" type="PackedScene" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
@@ -35,110 +18,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="AcceptDialog" type="AcceptDialog" parent="CanvasLayer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -87.0
-margin_top = -29.0
-margin_right = 87.0
-margin_bottom = 29.0
-rect_pivot_offset = Vector2( 85.6584, 18.4822 )
-window_title = "Countdown finished"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Components" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 108.218
-margin_right = 108.218
-custom_constants/separation = 100
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Countdown" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 406.0
-margin_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 2
-custom_constants/separation = 30
-alignment = 1
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Countdown" type="Label" parent="HBoxContainer/Countdown"]
-margin_top = 189.0
-margin_right = 406.0
-margin_bottom = 252.0
-custom_fonts/font = SubResource( 2 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timer" type="Timer" parent="HBoxContainer/Countdown"]
-wait_time = 50.0
-one_shot = true
-
-[node name="Button" type="Button" parent="HBoxContainer/Countdown"]
-margin_top = 282.0
-margin_right = 406.0
-margin_bottom = 351.0
-custom_fonts/font = SubResource( 3 )
-text = "Start the timer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/Countdown"]
-margin_top = 381.0
-margin_right = 406.0
-margin_bottom = 411.0
-custom_fonts/font = SubResource( 4 )
-align = 1
-placeholder_text = "Countdown in seconds"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Clock" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 506.0
-margin_right = 506.0
-margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 500
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hour" type="Label" parent="HBoxContainer/Clock"]
-margin_top = 108.0
-margin_bottom = 233.0
-custom_fonts/font = SubResource( 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Clock" parent="Components" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 262.0
+margin_right = 262.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
 
-[node name="Minute" type="Label" parent="HBoxContainer/Clock"]
-margin_top = 237.0
-margin_bottom = 362.0
-custom_fonts/font = SubResource( 1 )
-align = 1
-valign = 1
-
-[node name="Seconds" type="Label" parent="HBoxContainer/Clock"]
-margin_top = 366.0
-margin_bottom = 491.0
-custom_fonts/font = SubResource( 1 )
-align = 1
-valign = 1
-
-[connection signal="timeout" from="HBoxContainer/Countdown/Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HBoxContainer/Countdown/Button" to="HBoxContainer/Countdown" method="_on_Button_pressed"]
+[node name="Countdown" parent="Components" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 762.0
+margin_right = 762.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )

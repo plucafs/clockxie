@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/components/Countdown.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Kenney Mini.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="Countdown" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 512, 300 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CountdownContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -159.0
+margin_top = -145.5
+margin_right = 159.0
+margin_bottom = 145.5
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Countdown" type="Label" parent="CountdownContainer"]
+margin_right = 318.0
+margin_bottom = 63.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="CountdownContainer"]
+wait_time = 50.0
+one_shot = true
+
+[node name="StartTimer" type="Button" parent="CountdownContainer"]
+margin_top = 83.0
+margin_right = 318.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 2 )
+text = "Start timer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTimer" type="Button" parent="CountdownContainer"]
+margin_top = 172.0
+margin_right = 318.0
+margin_bottom = 241.0
+custom_fonts/font = SubResource( 2 )
+text = "Pause timer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="CountdownContainer"]
+margin_top = 261.0
+margin_right = 318.0
+margin_bottom = 291.0
+custom_fonts/font = SubResource( 3 )
+text = "60"
+align = 1
+placeholder_text = "Countdown in seconds"
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CountdownContainer"]
+
+[node name="AcceptDialog" type="AcceptDialog" parent="CountdownContainer/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -29.0
+margin_right = 87.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 85.6584, 18.4822 )
+window_title = "Countdown finished"
+
+[connection signal="timeout" from="CountdownContainer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="CountdownContainer/StartTimer" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CountdownContainer/PauseTimer" to="." method="_on_PauseTimer_pressed"]
