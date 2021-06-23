@@ -9,4 +9,3 @@ func _process(_delta):
 
 func _on_Timer_timeout():
 	$CanvasLayer/AcceptDialog.show()
-	pass # Replace with function body.

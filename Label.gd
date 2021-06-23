@@ -6,4 +6,4 @@ func _ready():
 	self.text = date_time
 	
 func _process(_delta):
-	
+	pass
