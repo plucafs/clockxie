@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/components/Alarm.gd" type="Script" id=1]
+
+[node name="Alarm" type="Control"]
+margin_left = 800.0
+margin_right = 800.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = -432.0
+margin_top = 128.0
+margin_right = -374.0
+margin_bottom = 152.0
+
+[node name="HourLabel" type="Label" parent="."]
+margin_left = -424.0
+margin_top = 104.0
+margin_right = -384.0
+margin_bottom = 118.0
+text = "23"
+__meta__ = {
+"_edit_use_anchors_": false
+}

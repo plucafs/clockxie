@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Clock"
-config/description="A simple clock and a simple countdown timer."
+config/name="Tokei"
+config/description="A simple multi-purpose clock."
 run/main_scene="res://Control.tscn"
 config/icon="res://icon.png"
 
