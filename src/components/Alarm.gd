@@ -1,15 +1,25 @@
 extends Control
 
-#var user_alarm = {
-#
-#	$HourLabel.text = 
-#
-#}
-
 func _process(_delta):
-	$LineEdit.text = $HourLabel.text
-	alarm_time()
+	ring_ring()
 	
-func alarm_time():
-	if int($HourLabel.text) == OS.get_time()['hour']: 
-		print('Ring ring ring')
+func ring_ring():
+	if int($AlarmContainer/AlarmLabelHour.text) == OS.get_time()['hour'] and int($AlarmContainer/AlarmLabelMinutes.text) == OS.get_time()['minute']: 
+		$RingRing.play()
+		alarm_sound()
+		print('Ring Ring')
+
+func alarm_sound():
+	$RingRing.play()
+	$RingRing.stream_paused = false
+
+func _on_SetAlarmHour_pressed():
+	$AlarmContainer/AlarmLabelHour.text = ' '
+	$AlarmContainer/AlarmLabelHour.text += $AlarmContainer/ChangeAlarmHour.text
+	
+
+func _on_SetAlarmMinutes_pressed():
+	$AlarmContainer/AlarmLabelMinutes.text = ' '
+	$AlarmContainer/AlarmLabelMinutes.text += $AlarmContainer/ChangeAlarmMinutes.text
+
+	
