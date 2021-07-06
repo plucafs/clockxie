@@ -2,7 +2,7 @@
     <h1 align = "center">Tokei - a free and open-source multi-purpose clock</h1>
 </p>
 <p align="center">
-    Made by plucafs with the Godot Engine, written in GDScript
+    Made by plucafs and friends with the Godot Engine, written in GDScript
 </p>
 
 ## Features:
