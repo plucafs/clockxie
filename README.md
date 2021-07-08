@@ -9,7 +9,7 @@
 
 - A simple digital clock
 - A countdown timer (experimental)
-- **Here** the next feature you'll add! :P
+- A simple alarm
 
 ## Credits:
 The font used is 'Kenny Mini' by Kenney. Check out his great work providing free assets for game developing.
