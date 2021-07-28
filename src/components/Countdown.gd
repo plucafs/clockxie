@@ -3,41 +3,39 @@ extends Control
 var current_time
 
 func _process(_delta):
-	$CountdownContainer/Countdown.text = _format_timer_output(_time_converter(int($CountdownContainer/Timer.time_left)))
+	$Countdown.text = _format_timer_output(_time_converter(int($Timer.time_left)))
 	
-#func _input(_event):
-#	if Input.is_action_just_pressed("ui_accept"):
-#		$CountdownContainer/Timer.start()
-
-func _on_Button_pressed():
-	var line_edit_text = $CountdownContainer/LineEdit.text
-	if(_check_label_characters(line_edit_text)):
-		$CountdownContainer/Timer.paused = false
-		$CountdownContainer/Timer.start(int(line_edit_text))
-		$CountdownContainer/PauseTimer.text = "Pause timer"
-	$CountdownContainer/LineEdit.text = ""
+func _on_StartTimer_pressed():
+	var complete_seconds = (int($Time/Hour.text) * 3600) + (int($Time/Minutes.text) * 60) + (int($Time/Seconds.text))
+	print(complete_seconds)
+	if(_check_label_characters(complete_seconds)):
+		$Timer.paused = false
+		$Timer.start(int(complete_seconds))
+		$PauseTimer.text = "Pause timer"
+	$Time/Hour.text = ""
+	$Time/Minutes.text = ""
+	$Time/Seconds.text = ""
 
 func _on_Timer_timeout():
-	$CountdownContainer/CanvasLayer/AcceptDialog.show()
+	$CanvasLayer/AcceptDialog.show()
 
 func _on_PauseTimer_pressed():
-	$CountdownContainer/LineEdit.text = ""	
-	if($CountdownContainer/Timer.paused && current_time > 0.001):
-		$CountdownContainer/Timer.paused = false
-		$CountdownContainer/Timer.start(int(current_time))
-		$CountdownContainer/PauseTimer.text = "Pause timer"
+	if($Timer.paused && current_time > 0.001):
+		$Timer.paused = false
+		$Timer.start(int(current_time))
+		$PauseTimer.text = "Pause timer"
 		return
-	$CountdownContainer/Timer.paused = true
-	current_time = int($CountdownContainer/Timer.time_left)
+	$Timer.paused = true
+	current_time = int($Timer.time_left)
 	if(current_time > 0.001):
-		$CountdownContainer/PauseTimer.text = "Resume timer"
+		$PauseTimer.text = "Resume timer"
 
 func _check_label_characters(string):
-	if (len(string) == 0 || ord(string[0]) == 48):
-		return false
-	for character in string:
-		if(ord(character) < 48 || ord(character) > 57):
-			return false
+#	if (len(string) == 0 || ord(string[0]) == 48):
+#		return false
+#	for character in string:
+#		if(ord(character) < 48 || ord(character) > 57):
+#			return false
 	return true
 
 func _time_converter(seconds):
@@ -52,4 +50,7 @@ func _format_timer_output(time):
 		output += str(time[i]) + " : "
 	output = output.substr(0, len(output) - 2)
 	return output
+
+
+
 	

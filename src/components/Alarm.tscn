@@ -3,28 +3,25 @@
 [ext_resource path="res://src/components/Alarm.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/ring_ring.ogg" type="AudioStream" id=2]
 
-[node name="Alarm" type="Control"]
-rect_pivot_offset = Vector2( 32, 32 )
+[node name="AlarmContainer" type="VBoxContainer"]
+margin_right = 89.0
+margin_bottom = 136.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AlarmContainer" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
-[node name="AlarmLabelHour" type="Label" parent="AlarmContainer"]
+[node name="AlarmLabelHour" type="Label" parent="."]
 margin_right = 89.0
 margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AlarmLabelMinutes" type="Label" parent="AlarmContainer"]
+[node name="AlarmLabelMinutes" type="Label" parent="."]
 margin_top = 18.0
 margin_right = 89.0
 margin_bottom = 32.0
@@ -32,42 +29,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeAlarmHour" type="LineEdit" parent="AlarmContainer"]
+[node name="ChangeAlarmHour" type="LineEdit" parent="."]
 margin_top = 36.0
 margin_right = 89.0
 margin_bottom = 60.0
+align = 1
+placeholder_text = "Hours"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeAlarmMinutes" type="LineEdit" parent="AlarmContainer"]
+[node name="ChangeAlarmMinutes" type="LineEdit" parent="."]
 margin_top = 64.0
 margin_right = 89.0
 margin_bottom = 88.0
+align = 1
+placeholder_text = "Minutes"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SetAlarmHour" type="Button" parent="AlarmContainer"]
+[node name="SetAlarm" type="Button" parent="."]
 margin_top = 92.0
 margin_right = 89.0
 margin_bottom = 112.0
-text = "Set hour"
+text = "Set alarm"
 
-[node name="SetAlarmMinutes" type="Button" parent="AlarmContainer"]
-margin_top = 116.0
-margin_right = 89.0
-margin_bottom = 136.0
-text = "Set minutes"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RingRing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-
-[connection signal="pressed" from="AlarmContainer/SetAlarmHour" to="." method="_on_SetAlarmHour_pressed"]
-[connection signal="pressed" from="AlarmContainer/SetAlarmHour" to="." method="_on_SetAlarm_pressed"]
-[connection signal="pressed" from="AlarmContainer/SetAlarmMinutes" to="." method="_on_SetAlarmMinutes_pressed"]
-[connection signal="pressed" from="AlarmContainer/SetAlarmMinutes" to="." method="_on_SetAlarm_pressed"]
-[connection signal="finished" from="RingRing" to="." method="_on_RingRing_finished"]
+[connection signal="pressed" from="SetAlarm" to="." method="_on_SetAlarm_pressed"]
