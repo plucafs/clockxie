@@ -1,16 +1,27 @@
-<p align="center">
-    <h1 align = "center">Tokei - a free and open-source multi-purpose clock</h1>
-</p>
-<p align="center">
-    Made by plucafs and friends with the Godot Engine, written in GDScript
-</p>
+![clockxie_logo](assets/icon/icon2.png)
 
-## Features:
+# clockxie
+A clock, alarm and countdown timer made in Godot
 
-- A simple digital clock
-- A countdown timer (experimental)
-- A simple alarm
+![clockxie_screenshot](/assets/icon/screenshot.png)
+
+Why?
+-
+While I was debloating Windows I deleted also the app clock. I recovered it soon, but in the meantime I tried developing something similar to improve mi skills using Godot and GDScript.
+
+How it works?
+-
+It's all pretty rough but straightforward. If you have any kind of problem or suggestion feel free to open an issue.
+
+What's next?
+-
+- Feel free to propose something!
 
 ## Credits:
-The font used is 'Kenny Mini' by Kenney. Check out his great work providing free assets for game developing.
-Site: https://www.kenney.nl/
+Thanks Lorenzo for the countdown system
+
+Made with Godot Engine
+
+Font: Roboto
+Designed by Christian Robertson
+(https://fonts.google.com/specimen/Roboto)
