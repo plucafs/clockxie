@@ -7,7 +7,7 @@ A clock, alarm and countdown timer made in Godot
 
 Why?
 -
-While I was debloating Windows I deleted also the app clock. I recovered it soon, but in the meantime I tried developing something similar to improve mi skills using Godot and GDScript.
+While I was debloating Windows I deleted also the clock app. I recovered it soon, but in the meantime I tried developing something similar to improve mi skills using Godot and GDScript.
 
 How it works?
 -
