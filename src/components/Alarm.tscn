@@ -3,56 +3,97 @@
 [ext_resource path="res://src/components/Alarm.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/ring_ring.ogg" type="AudioStream" id=2]
 
-[node name="AlarmContainer" type="VBoxContainer"]
-margin_right = 89.0
-margin_bottom = 136.0
+[node name="Alarm" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 415.0
+margin_right = -415.0
+alignment = 1
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Alarm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 
-[node name="AlarmLabelHour" type="Label" parent="."]
-margin_right = 89.0
+[node name="AlarmLabel" type="HBoxContainer" parent="."]
+margin_top = 255.0
+margin_right = 194.0
+margin_bottom = 269.0
+alignment = 1
+
+[node name="AlarmLabelHour" type="Label" parent="AlarmLabel"]
+margin_left = 91.0
+margin_right = 91.0
 margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AlarmLabelMinutes" type="Label" parent="."]
-margin_top = 18.0
-margin_right = 89.0
-margin_bottom = 32.0
+[node name="Label" type="Label" parent="AlarmLabel"]
+margin_left = 95.0
+margin_right = 99.0
+margin_bottom = 14.0
+text = ":"
+align = 1
+valign = 1
+
+[node name="AlarmLabelMinutes" type="Label" parent="AlarmLabel"]
+margin_left = 103.0
+margin_right = 103.0
+margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeAlarmHour" type="LineEdit" parent="."]
-margin_top = 36.0
-margin_right = 89.0
-margin_bottom = 60.0
+[node name="AlarmTexts" type="HBoxContainer" parent="."]
+margin_top = 273.0
+margin_right = 194.0
+margin_bottom = 297.0
+alignment = 1
+
+[node name="ChangeAlarmHour" type="LineEdit" parent="AlarmTexts"]
+margin_right = 95.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 align = 1
 placeholder_text = "Hours"
+caret_blink = true
+caret_blink_speed = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChangeAlarmMinutes" type="LineEdit" parent="."]
-margin_top = 64.0
-margin_right = 89.0
-margin_bottom = 88.0
+[node name="ChangeAlarmMinutes" type="LineEdit" parent="AlarmTexts"]
+margin_left = 99.0
+margin_right = 194.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 align = 1
 placeholder_text = "Minutes"
+caret_blink = true
+caret_blink_speed = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SetAlarm" type="Button" parent="."]
-margin_top = 92.0
-margin_right = 89.0
-margin_bottom = 112.0
+margin_top = 301.0
+margin_right = 194.0
+margin_bottom = 321.0
 text = "Set alarm"
 
+[node name="StopAlarm" type="Button" parent="."]
+margin_top = 325.0
+margin_right = 194.0
+margin_bottom = 345.0
+text = "Stop alarm"
+
+[node name="ResetStopAlarm" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="finished" from="Alarm" to="." method="_on_Alarm_finished"]
 [connection signal="pressed" from="SetAlarm" to="." method="_on_SetAlarm_pressed"]
+[connection signal="pressed" from="StopAlarm" to="." method="_on_StopAlarm_pressed"]
+[connection signal="timeout" from="ResetStopAlarm" to="." method="_on_ResetStopAlarmTimer_timeout"]

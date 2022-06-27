@@ -1,32 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/components/Countdown.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Kenney Mini.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 2 )
+[ext_resource path="res://assets/themes/dark.tres" type="Theme" id=3]
 
 [node name="CountdownContainer" type="VBoxContainer"]
-margin_right = 318.0
-margin_bottom = 291.0
-custom_constants/separation = 20
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_constants/separation = 30
+alignment = 1
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Countdown" type="Label" parent="."]
-margin_right = 318.0
-margin_bottom = 63.0
-custom_fonts/font = SubResource( 1 )
+[node name="Timer" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+
+[node name="Time" type="VBoxContainer" parent="."]
+margin_top = 100.0
+margin_right = 1024.0
+margin_bottom = 328.0
+alignment = 1
+
+[node name="Countdown" type="Label" parent="Time"]
+margin_right = 1024.0
+margin_bottom = 52.0
 text = "0"
 align = 1
 valign = 1
@@ -34,42 +33,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 50.0
-one_shot = true
-
-[node name="StartTimer" type="Button" parent="."]
-margin_top = 83.0
-margin_right = 318.0
-margin_bottom = 152.0
-custom_fonts/font = SubResource( 2 )
-text = "Start timer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseTimer" type="Button" parent="."]
-margin_top = 172.0
-margin_right = 318.0
-margin_bottom = 241.0
-custom_fonts/font = SubResource( 2 )
-text = "Pause timer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Time" type="VBoxContainer" parent="."]
-margin_top = 261.0
-margin_right = 318.0
-margin_bottom = 359.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
+[node name="HSeparator" type="HSeparator" parent="Time"]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 60.0
 
 [node name="Hour" type="LineEdit" parent="Time"]
-margin_right = 318.0
-margin_bottom = 30.0
-custom_fonts/font = SubResource( 3 )
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 116.0
 align = 1
 placeholder_text = "Hours"
 caret_blink = true
@@ -79,10 +51,9 @@ __meta__ = {
 }
 
 [node name="Minutes" type="LineEdit" parent="Time"]
-margin_top = 34.0
-margin_right = 318.0
-margin_bottom = 64.0
-custom_fonts/font = SubResource( 3 )
+margin_top = 120.0
+margin_right = 1024.0
+margin_bottom = 172.0
 align = 1
 placeholder_text = "Minutes"
 caret_blink = true
@@ -92,14 +63,40 @@ __meta__ = {
 }
 
 [node name="Seconds" type="LineEdit" parent="Time"]
-margin_top = 68.0
-margin_right = 318.0
-margin_bottom = 98.0
-custom_fonts/font = SubResource( 3 )
+margin_top = 176.0
+margin_right = 1024.0
+margin_bottom = 228.0
 align = 1
 placeholder_text = "Seconds"
 caret_blink = true
 caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 358.0
+margin_right = 1024.0
+margin_bottom = 362.0
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+margin_top = 392.0
+margin_right = 1024.0
+margin_bottom = 500.0
+
+[node name="StartTimer" type="Button" parent="Buttons"]
+margin_right = 1024.0
+margin_bottom = 52.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTimer" type="Button" parent="Buttons"]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 108.0
+text = "Pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -116,8 +113,9 @@ margin_top = -29.0
 margin_right = 87.0
 margin_bottom = 29.0
 rect_pivot_offset = Vector2( 85.6584, 18.4822 )
+theme = ExtResource( 3 )
 window_title = "Countdown finished"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="StartTimer" to="." method="_on_StartTimer_pressed"]
-[connection signal="pressed" from="PauseTimer" to="." method="_on_PauseTimer_pressed"]
+[connection signal="pressed" from="Buttons/StartTimer" to="." method="_on_StartTimer_pressed"]
+[connection signal="pressed" from="Buttons/PauseTimer" to="." method="_on_PauseTimer_pressed"]

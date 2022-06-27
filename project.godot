@@ -10,10 +10,16 @@ config_version=4
 
 [application]
 
-config/name="Tokei"
-config/description="A simple multi-purpose clock."
+config/name="clockxie"
+config/description="A clock, alarm and countdown timer."
 run/main_scene="res://Control.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://assets/icon/splash.png"
+config/icon="res://assets/icon/icon2.png"
+config/windows_native_icon="res://assets/icon/icon.ico"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
 
 [physics]
 

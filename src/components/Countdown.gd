@@ -1,20 +1,32 @@
 extends Control
 
+onready var countdown_text = get_node("Time/Countdown")
+onready var start_timer = get_node("Buttons/StartTimer")
+onready var pause_timer = get_node("Buttons/PauseTimer")
+onready var separator_countodwn_text = get_node("Time/HSeparator")
+onready var reset_timer
+
+onready var hour_text = get_node("Time/Hour")
+onready var minutes_text = get_node("Time/Minutes")
+onready var seconds_text = get_node("Time/Seconds")
+
 var current_time
 
 func _process(_delta):
-	$Countdown.text = _format_timer_output(_time_converter(int($Timer.time_left)))
+#	separator_countodwn_text.rect_size.y = countdown_text.rect_size.y
+	
+	countdown_text.text = _format_timer_output(_time_converter(int($Timer.time_left)))
 	
 func _on_StartTimer_pressed():
-	var complete_seconds = (int($Time/Hour.text) * 3600) + (int($Time/Minutes.text) * 60) + (int($Time/Seconds.text))
+	var complete_seconds = (int(hour_text.text) * 3600) + (int(minutes_text.text) * 60) + (int(seconds_text.text))
 	print(complete_seconds)
 	if(_check_label_characters(complete_seconds)):
 		$Timer.paused = false
 		$Timer.start(int(complete_seconds))
-		$PauseTimer.text = "Pause timer"
-	$Time/Hour.text = ""
-	$Time/Minutes.text = ""
-	$Time/Seconds.text = ""
+		pause_timer.text = "Pause timer"
+	hour_text.text = ""
+	minutes_text.text = ""
+	seconds_text.text = ""
 
 func _on_Timer_timeout():
 	$CanvasLayer/AcceptDialog.show()
@@ -23,12 +35,12 @@ func _on_PauseTimer_pressed():
 	if($Timer.paused && current_time > 0.001):
 		$Timer.paused = false
 		$Timer.start(int(current_time))
-		$PauseTimer.text = "Pause timer"
+		pause_timer.text = "Pause timer"
 		return
 	$Timer.paused = true
 	current_time = int($Timer.time_left)
 	if(current_time > 0.001):
-		$PauseTimer.text = "Resume timer"
+		pause_timer.text = "Resume timer"
 
 func _check_label_characters(string):
 #	if (len(string) == 0 || ord(string[0]) == 48):
