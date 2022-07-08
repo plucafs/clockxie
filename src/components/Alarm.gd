@@ -7,7 +7,6 @@ onready var alarm_text_hour = get_node("AlarmTexts/ChangeAlarmHour")
 onready var alarm_text_minute = get_node("AlarmTexts/ChangeAlarmMinutes")
 
 onready var set_alarm = get_node("SetAlarm")
-onready var stop_alarm = get_node("StopAlarm")
 onready var reset_stop_alarm = get_node("ResetStopAlarm")
 
 onready var sound_alarm = get_node("Alarm")
@@ -19,6 +18,7 @@ var number_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15]
 #--------------------------------------------------
 
 func _process(_delta):
+	
 	if sound_alarm_count == 0:
 		ring_ring()
 
@@ -65,8 +65,10 @@ func _on_StopAlarm_pressed():
 	sound_alarm_stop = false
 	reset_stop_alarm.start()
 	
-func _on_ResetStopAlarmTimer_timeout():
+func _on_ResetAlarm_pressed():
 	sound_alarm_stop = true
 	sound_alarm_count = 0
-	print(sound_alarm_stop)
-	
+	alarm_label_hour.text = ""
+	alarm_label_minutes.text = ""
+	alarm_text_hour.text = ""
+	alarm_text_minute.text = ""

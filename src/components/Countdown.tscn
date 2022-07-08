@@ -4,27 +4,32 @@
 [ext_resource path="res://assets/themes/dark.tres" type="Theme" id=3]
 
 [node name="CountdownContainer" type="VBoxContainer"]
-anchor_right = 1.0
+anchor_left = 0.0605469
+anchor_right = 0.939453
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
-custom_constants/separation = 30
+custom_constants/separation = 20
 alignment = 1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 50.0
 one_shot = true
 
 [node name="Time" type="VBoxContainer" parent="."]
-margin_top = 100.0
-margin_right = 1024.0
-margin_bottom = 328.0
+margin_top = 70.0
+margin_right = 899.0
+margin_bottom = 362.0
+custom_constants/separation = 20
 alignment = 1
 
 [node name="Countdown" type="Label" parent="Time"]
-margin_right = 1024.0
+margin_right = 899.0
 margin_bottom = 52.0
 text = "0"
 align = 1
@@ -34,14 +39,14 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="Time"]
-margin_top = 56.0
-margin_right = 1024.0
-margin_bottom = 60.0
+margin_top = 72.0
+margin_right = 899.0
+margin_bottom = 76.0
 
 [node name="Hour" type="LineEdit" parent="Time"]
-margin_top = 64.0
-margin_right = 1024.0
-margin_bottom = 116.0
+margin_top = 96.0
+margin_right = 899.0
+margin_bottom = 148.0
 align = 1
 placeholder_text = "Hours"
 caret_blink = true
@@ -51,9 +56,9 @@ __meta__ = {
 }
 
 [node name="Minutes" type="LineEdit" parent="Time"]
-margin_top = 120.0
-margin_right = 1024.0
-margin_bottom = 172.0
+margin_top = 168.0
+margin_right = 899.0
+margin_bottom = 220.0
 align = 1
 placeholder_text = "Minutes"
 caret_blink = true
@@ -63,9 +68,9 @@ __meta__ = {
 }
 
 [node name="Seconds" type="LineEdit" parent="Time"]
-margin_top = 176.0
-margin_right = 1024.0
-margin_bottom = 228.0
+margin_top = 240.0
+margin_right = 899.0
+margin_bottom = 292.0
 align = 1
 placeholder_text = "Seconds"
 caret_blink = true
@@ -75,17 +80,18 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="."]
-margin_top = 358.0
-margin_right = 1024.0
-margin_bottom = 362.0
+margin_top = 382.0
+margin_right = 899.0
+margin_bottom = 386.0
 
 [node name="Buttons" type="VBoxContainer" parent="."]
-margin_top = 392.0
-margin_right = 1024.0
-margin_bottom = 500.0
+margin_top = 406.0
+margin_right = 899.0
+margin_bottom = 530.0
+custom_constants/separation = 20
 
 [node name="StartTimer" type="Button" parent="Buttons"]
-margin_right = 1024.0
+margin_right = 899.0
 margin_bottom = 52.0
 text = "Start"
 __meta__ = {
@@ -93,9 +99,9 @@ __meta__ = {
 }
 
 [node name="PauseTimer" type="Button" parent="Buttons"]
-margin_top = 56.0
-margin_right = 1024.0
-margin_bottom = 108.0
+margin_top = 72.0
+margin_right = 899.0
+margin_bottom = 124.0
 text = "Pause"
 __meta__ = {
 "_edit_use_anchors_": false
